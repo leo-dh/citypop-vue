@@ -1,18 +1,21 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div class="home h-screen">
+    <h1 class="uppercase text-4xl font-bold text-center title-color">Discover Citypop</h1>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: "Home",
-  components: {
-    HelloWorld
-  }
+  name: 'Home'
 });
 </script>
+
+<style lang="postcss" scoped>
+.title-color {
+  background: -webkit-linear-gradient(315deg, #da7c71, #8260a3);
+  background-clip: text;
+  color: transparent;
+}
+</style>
