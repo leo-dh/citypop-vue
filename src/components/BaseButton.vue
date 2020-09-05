@@ -13,8 +13,10 @@ export default defineComponent({
 
     function triggerRipple(e: Event): void {
       const buttonElement = (button.value as unknown) as HTMLElement;
-      const x = (e as MouseEvent).clientX - buttonElement.offsetLeft;
-      const y = (e as MouseEvent).clientY - buttonElement.offsetTop;
+      const { left, top } = buttonElement.getBoundingClientRect();
+      const { clientX, clientY } = e as MouseEvent;
+      const x = clientX - left;
+      const y = clientY - top;
       const ripple = document.createElement('span');
       ripple.classList.add('ripple');
       ripple.style.left = `${x}px`;

@@ -1,21 +1,19 @@
 <template>
-  <div class="home h-screen">
-    <h1 class="uppercase text-4xl font-bold text-center title-color">Discover Citypop</h1>
+  <div class="flex flex-col">
+    <main-hero />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import MainHero from '@/components/MainHero.vue';
 
 export default defineComponent({
-  name: 'Home'
+  name: 'Home',
+  components: {
+    MainHero
+  }
 });
 </script>
 
-<style lang="postcss" scoped>
-.title-color {
-  background: -webkit-linear-gradient(315deg, #da7c71, #8260a3);
-  background-clip: text;
-  color: transparent;
-}
-</style>
+<style lang="postcss" scoped></style>
