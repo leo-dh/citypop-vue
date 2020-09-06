@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col">
     <main-hero />
+    <main-hero />
   </div>
 </template>
 

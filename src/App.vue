@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <nav-bar />
+    <navigation />
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import NavBar from '@/components/NavBar.vue';
+import Navigation from '@/components/Navigation.vue';
 
 export default defineComponent({
   components: {
-    NavBar
+    Navigation
   },
   setup() {
     return {};
@@ -24,6 +24,6 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: whitesmoke;
-  background: #392f43;
+  @apply bg-blackcurrant;
 }
 </style>
