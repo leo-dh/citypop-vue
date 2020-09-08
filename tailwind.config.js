@@ -2,6 +2,10 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
   purge: ['./public/**/*.html', './src/**/*.html', './src/**/*.vue'],
   theme: {
+    aspectRatio: {
+      none: 0,
+      square: [1, 1]
+    },
     extend: {
       fontFamily: {
         sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
@@ -49,5 +53,5 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: [require('tailwindcss-elevation')(['responsive'])]
+  plugins: [require('tailwindcss-elevation')(['responsive']), require('tailwindcss-aspect-ratio')]
 };
