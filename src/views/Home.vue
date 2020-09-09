@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <main-hero />
     <div class="flex justify-center">
-      <div class="max-w-screen-xl py-12 flex flex-col items-center px-4 space-y-12">
+      <div id="scrollTo" class="max-w-screen-xl py-12 flex flex-col items-center px-4 space-y-12">
         <div>
           <h2>What is City pop?</h2>
           <p class="mt-6">
@@ -10,7 +10,7 @@
             that blended pop, jazz, and funk
           </p>
           <p class="font-cursive mt-4">Music made by city people, for city people</p>
-          <btn class="rounded-full px-5 py-2 bg-mojo-500 mt-8 elevation-2">
+          <btn class="rounded-full px-5 py-2 bg-mojo-500 mt-8 elevation-2" @click="play = !play">
             <div class="flex items-center">
               <h6 class="font-bold">PLAY SAMPLE</h6>
               <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white ml-2">
@@ -22,6 +22,7 @@
             </div>
           </btn>
         </div>
+        <youtube-i-frame :play="play" @video-state-change="handleVideoState" />
         <div>
           <h2>Origins</h2>
           <p class="mt-6">
@@ -84,7 +85,7 @@
     </div>
     <div class="flex items-center justify-center w-screen h-screen relative overflow-hidden">
       <div class="flex flex-col items-center">
-        <h2>Love what you hear?</h2>
+        <h2 class="text-center">Love what you hear?</h2>
         <btn class="font-cursive bg-mojo-500 px-4 py-2 rounded-full mt-4 elevation-2">
           find out more!
         </btn>
@@ -96,17 +97,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import MainHero from '@/components/MainHero.vue';
 import ImageCard from '@/components/ImageCard.vue';
 import AlbumGrid from '@/components/AlbumGrid.vue';
+import YoutubeIFrame from '@/components/YoutubeIFrame.vue';
 
 export default defineComponent({
   name: 'Home',
   components: {
     MainHero,
     ImageCard,
-    AlbumGrid
+    AlbumGrid,
+    YoutubeIFrame
+  },
+  setup() {
+    const play = ref(false);
+
+    const handleVideoState = (playing: boolean) => {
+      play.value = playing;
+    };
+
+    return { play, handleVideoState };
   }
 });
 </script>
@@ -116,6 +128,7 @@ export default defineComponent({
   position: absolute;
   opacity: 0.05;
   font-size: 5em;
+  line-height: 0.8em;
   white-space: nowrap;
   font-weight: bold;
   user-select: none;

@@ -7,6 +7,7 @@
       </h1>
       <btn
         class="px-4 py-2 bg-mojo-500 text-center rounded-full mt-8 font-cursive elevation-2 z-10"
+        @click="scrollIntoView"
       >
         Let's go!
       </btn>
@@ -18,7 +19,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 
-export default defineComponent({});
+export default defineComponent({
+  setup() {
+    const scrollIntoView = () => {
+      document.querySelector('#scrollTo')?.scrollIntoView({ behavior: 'smooth' });
+    };
+    return { scrollIntoView };
+  }
+});
 </script>
 
 <style lang="postcss" scoped>
