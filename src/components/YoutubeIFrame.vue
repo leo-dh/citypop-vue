@@ -22,13 +22,9 @@ export default defineComponent({
   emits: ['video-state-change'],
   setup(props, context) {
     const player = ref<YT.Player | null>(null);
+    const YOUTUBE_API_SRC = 'https://www.youtube.com/iframe_api';
 
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
-    (window as any).onYouTubeIframeAPIReady = () => {
+    const createYTPlayer = () => {
       player.value = new window.YT.Player('player', {
         videoId: props.videoId,
         events: {
@@ -43,11 +39,26 @@ export default defineComponent({
             console.error('ERROR');
           },
           onReady: () => {
-            // console.log('READY');
+            // console.info("Player Ready");
           }
         }
       });
     };
+
+    if (!document.querySelector(`script[src="${YOUTUBE_API_SRC}"]`)) {
+      const tag = document.createElement('script');
+      tag.src = YOUTUBE_API_SRC;
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+      (window as any).onYouTubeIframeAPIReady = () => {
+        createYTPlayer();
+      };
+    } else {
+      if (window.YT) {
+        createYTPlayer();
+      }
+    }
 
     watch(
       () => props.play,
