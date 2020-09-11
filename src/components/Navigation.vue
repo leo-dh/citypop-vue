@@ -1,8 +1,8 @@
 <template>
-  <nav class="fixed z-10" :class="showNav ? 'nav--show' : 'nav--hide'">
-    <div class="max-w-screen-xl p-1 flex justify-between">
+  <nav class="fixed z-10 flex justify-center w-full" :class="showNav ? 'nav--show' : 'nav--hide'">
+    <div class="max-w-screen-xl p-1 flex justify-between w-full sm:justify-end">
       <btn
-        class="p-3 rounded-full hover:bg-gray-600 hover:bg-opacity-25 hover-fade"
+        class="p-3 rounded-full hover:bg-gray-600 hover:bg-opacity-25 hover-fade sm:hidden"
         @click="toggleSideBar(true)"
       >
         <svg
@@ -17,13 +17,20 @@
           />
         </svg>
       </btn>
+      <div class="hidden sm:flex space-x-8 mr-8 py-6">
+        <template v-for="(route, i) in routes" :key="i">
+          <router-link :to="route.path" exact-active-class="text-japonica-500">
+            <span class="font-bold text-lg">{{ route.name }}</span>
+          </router-link>
+        </template>
+      </div>
     </div>
   </nav>
   <div>
     <transition name="fade">
       <div
         v-if="showSideBar"
-        class="w-screen h-screen fixed cursor-pointer bg-black bg-opacity-25 z-20"
+        class="w-full h-screen fixed cursor-pointer bg-black bg-opacity-25 z-20"
         @click="toggleSideBar(false)"
       ></div>
     </transition>
@@ -60,7 +67,7 @@ function useSideBar() {
       document.body.style.overflow = 'hidden';
     } else {
       showSideBar.value = false;
-      document.body.style.overflow = 'initial';
+      document.body.style.overflow = 'auto';
     }
   }
   watch(useRoute(), () => {
@@ -80,7 +87,7 @@ function useNavBar() {
       showNav.value = yOffset <= prevYOffset;
       prevYOffset = yOffset;
     },
-    200,
+    150,
     { leading: true }
   );
   onMounted(() => {

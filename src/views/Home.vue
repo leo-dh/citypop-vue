@@ -83,7 +83,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center justify-center w-screen h-screen relative overflow-hidden">
+    <div class="flex items-center justify-center w-full h-screen relative overflow-hidden">
       <div class="flex flex-col items-center">
         <h2 class="text-center">Love what you hear?</h2>
         <btn class="font-cursive bg-mojo-500 px-4 py-2 rounded-full mt-4 elevation-2">

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="main">
     <navigation />
     <router-view />
   </div>
@@ -25,5 +25,8 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   color: whitesmoke;
   @apply bg-blackcurrant;
+}
+#main {
+  @apply w-screen max-w-full;
 }
 </style>

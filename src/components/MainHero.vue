@@ -1,12 +1,12 @@
 <template>
-  <div class="flex items-center justify-center w-screen h-screen relative overflow-hidden">
+  <div class="flex items-center justify-center w-full h-screen relative overflow-hidden">
     <div class="flex flex-col items-center">
-      <h1 class="uppercase text-5xl leading-tight font-bold text-center title-color">
+      <h1 class="uppercase text-5xl leading-tight font-bold text-center title-color sm:text-6xl">
         Discover<br />
         Citypop
       </h1>
       <btn
-        class="px-4 py-2 bg-mojo-500 text-center rounded-full mt-8 font-cursive elevation-2 z-10"
+        class="px-4 py-2 bg-mojo-500 text-center rounded-full mt-8 font-cursive elevation-2 z-10 sm:text-xl sm:px-6"
         @click="scrollIntoView"
       >
         Let's go!
@@ -40,9 +40,8 @@ export default defineComponent({
   color: transparent;
 }
 .watermark {
-  @apply absolute bottom-0 max-w-none;
+  @apply absolute bottom-0 w-full;
   opacity: 0.1;
-  min-width: 100vw;
   min-height: 40vh;
 }
 </style>
