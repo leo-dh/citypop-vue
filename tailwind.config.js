@@ -13,6 +13,16 @@ module.exports = {
         serif: ['"Roboto Slab"', ...defaultTheme.fontFamily.serif],
         cursive: ['Damion', 'cursive']
       },
+      fontSize: {
+        '7xl': '5rem',
+        '8xl': '6rem'
+      },
+      spacing: {
+        '72': '18rem',
+        '76': '19rem',
+        '84': '21rem',
+        '96': '24rem'
+      },
       colors: {
         deluge: {
           100: '#F3EFF6',

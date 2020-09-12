@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue';
+import { defineComponent, onMounted, ref, watch } from 'vue';
 
 export default defineComponent({
   props: {
@@ -39,7 +39,7 @@ export default defineComponent({
             console.error('ERROR');
           },
           onReady: () => {
-            // console.info("Player Ready");
+            // console.info('Player Ready');
           }
         }
       });
@@ -51,17 +51,19 @@ export default defineComponent({
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).onYouTubeIframeAPIReady = () => {
         createYTPlayer();
       };
     } else {
-      if (window.YT) {
+      onMounted(() => {
         createYTPlayer();
-      }
+      });
     }
 
     watch(
       () => props.play,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (newVal, _) => {
         if (newVal) {
           player.value?.playVideo();
@@ -80,5 +82,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped></style>

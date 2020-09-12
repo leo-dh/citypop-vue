@@ -46,5 +46,17 @@ export default defineComponent({
     grid-row: span 2;
     grid-column: span 2;
   }
+  @screen lg {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    > :nth-child(16) {
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+    > :nth-child(17) {
+      grid-row: span 1;
+      grid-column: span 1;
+    }
+  }
 }
 </style>

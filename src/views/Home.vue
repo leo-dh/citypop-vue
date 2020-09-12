@@ -2,10 +2,12 @@
   <div class="flex flex-col">
     <main-hero />
     <div class="flex justify-center">
-      <div id="scrollTo" class="max-w-screen-xl py-12 flex flex-col items-center px-4 space-y-12">
-        <div>
+      <div id="scrollTo" class="layout space-y-12 lg:space-y-0">
+        <div
+          class="flex flex-col items-start sm:items-center sm:text-center lg:text-left lg:items-start"
+        >
           <h2>What is City pop?</h2>
-          <p class="mt-6">
+          <p class="mt-6 max-w-ch">
             City pop (シティーポップ) is a genre of music popular in Japan in the late 70s and 80s
             that blended pop, jazz, and funk
           </p>
@@ -23,9 +25,9 @@
           </btn>
         </div>
         <youtube-i-frame :play="play" @video-state-change="handleVideoState" />
-        <div>
+        <div class="sm:text-center lg:text-left">
           <h2>Origins</h2>
-          <p class="mt-6">
+          <p class="mt-6 max-w-ch">
             It was originally termed as an offshoot of Japan's Western-influenced 'new music', but
             came to include a wide range of styles associated with the country's nascent economic
             boom, such as AOR, soft rock, R&B, funk, and boogie.
@@ -40,9 +42,9 @@
           artist="Hiroshi Nagai"
           img-src="PacificBreezeAlbumArtByHiroshiNagai.jpg"
         />
-        <div>
+        <div class="sm:text-center lg:text-left">
           <h2>21st Century</h2>
-          <p class="mt-6">
+          <p class="mt-6 max-w-ch">
             Though the golden age of city pop has long passed, the genre is slowly finding its
             relevance in the 21st century through other offshoot genres like vaporwave and
             futurefunk.
@@ -58,9 +60,9 @@
           artist="Usagihime"
           img-src="PlasticLoveArtworkByUsagiHime.jpg"
         />
-        <div>
+        <div class="sm:text-center lg:text-left">
           <h2>Sound Signature</h2>
-          <p class="mt-6">
+          <p class="mt-6 max-w-ch">
             City pop does not have a definite sound signature, it can sound like anything from soft,
             album-oriented rock to sophisticated boogie disco.
             <br />
@@ -78,21 +80,12 @@
           img-src="SonyMusicEditionCityPopAlbumArtbyEizinSuzuki.jpg"
         />
         <div>
-          <h2 class="text-left">Popular Albums</h2>
-          <album-grid class="mt-6" />
+          <h2 class="text-left sm:text-center">Popular Albums</h2>
+          <album-grid class="mt-6 sm:max-w-screen-sm lg:max-w-screen-lg xl:max-w-screen-xl" />
         </div>
       </div>
     </div>
-    <div class="flex items-center justify-center w-full h-screen relative overflow-hidden">
-      <div class="flex flex-col items-center">
-        <h2 class="text-center">Love what you hear?</h2>
-        <btn class="font-cursive bg-mojo-500 px-4 py-2 rounded-full mt-4 elevation-2">
-          find out more!
-        </btn>
-        <h6 class="watermark watermark--top">DISCOVER</h6>
-        <h6 class="watermark watermark--bottom">CITY POP</h6>
-      </div>
-    </div>
+    <end-section />
   </div>
 </template>
 
@@ -102,6 +95,7 @@ import MainHero from '@/components/MainHero.vue';
 import ImageCard from '@/components/ImageCard.vue';
 import AlbumGrid from '@/components/AlbumGrid.vue';
 import YoutubeIFrame from '@/components/YoutubeIFrame.vue';
+import EndSection from '@/components/EndSection.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -109,7 +103,8 @@ export default defineComponent({
     MainHero,
     ImageCard,
     AlbumGrid,
-    YoutubeIFrame
+    YoutubeIFrame,
+    EndSection
   },
   setup() {
     const play = ref(false);
@@ -124,23 +119,49 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.watermark {
-  position: absolute;
-  opacity: 0.05;
-  font-size: 5em;
-  line-height: 0.8em;
-  white-space: nowrap;
-  font-weight: bold;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-
-  &--top {
-    top: 0px;
+.max-w-ch {
+  @media (min-width: theme('screens.sm')) {
+    max-width: 60ch;
   }
-  &--bottom {
-    bottom: 0px;
+  @media (min-width: theme('screens.lg')) {
+    max-width: none;
+  }
+}
+.layout {
+  @apply py-12 flex flex-col items-center px-4;
+  @screen sm {
+    @apply max-w-screen-sm;
+  }
+  @screen md {
+    @apply max-w-screen-md;
+  }
+  @screen lg {
+    @apply max-w-screen-lg;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    gap: 96px 102px;
+    > :nth-child(3),
+    > :nth-child(5),
+    > :nth-child(7) {
+      grid-column: 2 / -1;
+      align-self: start;
+    }
+    > :nth-child(4) {
+      grid-row: 2;
+    }
+    > :nth-child(6) {
+      grid-row: 3;
+    }
+    > :nth-child(8) {
+      grid-row: 4;
+    }
+    > :nth-child(9) {
+      grid-column: span 2;
+    }
+  }
+  @screen xl {
+    @apply max-w-screen-xl;
+    gap: 96px 128px;
   }
 }
 </style>
