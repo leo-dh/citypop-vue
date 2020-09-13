@@ -17,16 +17,20 @@
           />
         </svg>
       </btn>
-      <div class="hidden sm:flex space-x-8 mr-8 py-6">
+      <div class="hidden sm:flex space-x-8 mr-8 py-6 lg:mr-12 lg:space-x-10">
         <template v-for="(route, i) in routes" :key="i">
-          <router-link :to="route.path" exact-active-class="text-japonica-500">
-            <span class="font-bold text-lg">{{ route.name }}</span>
+          <router-link
+            :to="route.path"
+            exact-active-class="router-link-active"
+            class="font-bold text-lg lg:text-xl hover:text-mojo-500 font-serif color-transition"
+          >
+            {{ route.name }}
           </router-link>
         </template>
       </div>
     </div>
   </nav>
-  <div>
+  <div class="sm:hidden">
     <transition name="fade">
       <div
         v-if="showSideBar"
@@ -144,5 +148,14 @@ nav {
 }
 .sidebar--hide {
   transform: translateX(-100%);
+}
+.router-link-active {
+  @apply text-japonica-500;
+  &:hover {
+    @apply text-japonica-500;
+  }
+}
+.color-transition {
+  transition: color 0.3s ease;
 }
 </style>

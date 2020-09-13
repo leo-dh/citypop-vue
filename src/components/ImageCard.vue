@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <div class="flex flex-col w-48 sm:w-64 lg:w-76">
+    <div class="flex flex-col w-48 sm:w-64 lg:w-70 xl:w-84">
       <div class="relative">
         <div class="aspect-ratio-square"></div>
         <img
@@ -9,7 +9,7 @@
           class="absolute left-0 top-0 w-full h-full object-cover"
         />
       </div>
-      <span class="font-cursive text-sm text-center mt-2 sm:text-base"
+      <span class="font-cursive text-sm text-center mt-2 sm:text-base xl:text-lg"
         >{{ title }}<br />
         by {{ artist }}
       </span>

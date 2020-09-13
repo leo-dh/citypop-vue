@@ -12,7 +12,10 @@
             that blended pop, jazz, and funk
           </p>
           <p class="font-cursive mt-4">Music made by city people, for city people</p>
-          <btn class="rounded-full px-5 py-2 bg-mojo-500 mt-8 elevation-2" @click="play = !play">
+          <btn
+            class="rounded-full px-5 py-2 bg-mojo-500 mt-8 btn-elevation btn-hover"
+            @click="play = !play"
+          >
             <div class="flex items-center">
               <h6 class="font-bold">PLAY SAMPLE</h6>
               <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-white ml-2">
@@ -25,9 +28,9 @@
           </btn>
         </div>
         <youtube-i-frame :play="play" @video-state-change="handleVideoState" />
-        <div class="sm:text-center lg:text-left">
-          <h2>Origins</h2>
-          <p class="mt-6 max-w-ch">
+        <short-description>
+          <template #title>Origins</template>
+          <template #content>
             It was originally termed as an offshoot of Japan's Western-influenced 'new music', but
             came to include a wide range of styles associated with the country's nascent economic
             boom, such as AOR, soft rock, R&B, funk, and boogie.
@@ -35,16 +38,16 @@
             <br />
             It was also associated with new emerging technologies, such as the Walkman, cars with
             built-in cassette decks and FM stereos, and various electronic musical instruments.
-          </p>
-        </div>
+          </template>
+        </short-description>
         <image-card
           title="'Pacific Breeze' Album Cover"
           artist="Hiroshi Nagai"
           img-src="PacificBreezeAlbumArtByHiroshiNagai.jpg"
         />
-        <div class="sm:text-center lg:text-left">
-          <h2>21st Century</h2>
-          <p class="mt-6 max-w-ch">
+        <short-description>
+          <template #title>21st Century</template>
+          <template #content>
             Though the golden age of city pop has long passed, the genre is slowly finding its
             relevance in the 21st century through other offshoot genres like vaporwave and
             futurefunk.
@@ -53,16 +56,16 @@
             One prime example is Plastic Love by Mariya Takeuchi. The song, released in 1984, was
             favoured by Youtube’s recommendation algorithm, giving it the attention it never had
             when it was first released.
-          </p>
-        </div>
+          </template>
+        </short-description>
         <image-card
           title="Plastic Love Thumbnail Artwork"
           artist="Usagihime"
           img-src="PlasticLoveArtworkByUsagiHime.jpg"
         />
-        <div class="sm:text-center lg:text-left">
-          <h2>Sound Signature</h2>
-          <p class="mt-6 max-w-ch">
+        <short-description>
+          <template #title>Sound Signature</template>
+          <template #content>
             City pop does not have a definite sound signature, it can sound like anything from soft,
             album-oriented rock to sophisticated boogie disco.
             <br />
@@ -72,8 +75,8 @@
             <br />
             <br />
             <b>Experience it for yourself to find out more!</b>
-          </p>
-        </div>
+          </template>
+        </short-description>
         <image-card
           title="Sony Music Edition City Pop Album"
           artist="Eizin Suzuki"
@@ -81,7 +84,9 @@
         />
         <div>
           <h2 class="text-left sm:text-center">Popular Albums</h2>
-          <album-grid class="mt-6 sm:max-w-screen-sm lg:max-w-screen-lg xl:max-w-screen-xl" />
+          <album-grid
+            class="mt-10 sm:max-w-screen-sm lg:max-w-screen-lg lg:mt-16 xl:max-w-screen-xl"
+          />
         </div>
       </div>
     </div>
@@ -96,6 +101,7 @@ import ImageCard from '@/components/ImageCard.vue';
 import AlbumGrid from '@/components/AlbumGrid.vue';
 import YoutubeIFrame from '@/components/YoutubeIFrame.vue';
 import EndSection from '@/components/EndSection.vue';
+import ShortDescription from '@/components/ShortDescription.vue';
 
 export default defineComponent({
   name: 'Home',
@@ -104,7 +110,8 @@ export default defineComponent({
     ImageCard,
     AlbumGrid,
     YoutubeIFrame,
-    EndSection
+    EndSection,
+    ShortDescription
   },
   setup() {
     const play = ref(false);
@@ -119,14 +126,6 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.max-w-ch {
-  @media (min-width: theme('screens.sm')) {
-    max-width: 60ch;
-  }
-  @media (min-width: theme('screens.lg')) {
-    max-width: none;
-  }
-}
 .layout {
   @apply py-12 flex flex-col items-center px-4;
   @screen sm {
@@ -136,7 +135,7 @@ export default defineComponent({
     @apply max-w-screen-md;
   }
   @screen lg {
-    @apply max-w-screen-lg;
+    @apply max-w-screen-lg py-16 px-12;
     display: grid;
     grid-template-columns: 4fr 5fr;
     gap: 96px 102px;
@@ -160,8 +159,16 @@ export default defineComponent({
     }
   }
   @screen xl {
-    @apply max-w-screen-xl;
-    gap: 96px 128px;
+    @apply max-w-screen-xl py-20;
+    gap: 96px 96px;
+  }
+}
+.max-w-ch {
+  @media (min-width: theme('screens.sm')) {
+    max-width: 60ch;
+  }
+  @media (min-width: theme('screens.lg')) {
+    max-width: none;
   }
 }
 </style>

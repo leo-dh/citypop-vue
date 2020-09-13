@@ -50,7 +50,6 @@ export default defineComponent({
       tag.src = YOUTUBE_API_SRC;
       const firstScriptTag = document.getElementsByTagName('script')[0];
       firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).onYouTubeIframeAPIReady = () => {
         createYTPlayer();

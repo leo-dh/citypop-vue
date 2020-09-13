@@ -4,7 +4,7 @@
       <h2 class="text-center sm:text-5xl lg:text-6xl xl:text-7xl">Love what you hear?</h2>
       <router-link to="/about">
         <btn
-          class="font-cursive bg-mojo-500 px-4 py-2 rounded-full mt-4 elevation-2 sm:text-lg sm:px-5 lg:text-xl lg:mt-8 xl:text-2xl xl:mt-12"
+          class="font-cursive bg-mojo-500 px-4 py-2 rounded-full mt-4 btn-elevation btn-hover sm:text-lg sm:px-5 lg:text-xl lg:mt-8 xl:text-2xl xl:mt-12"
         >
           find out more!
         </btn>

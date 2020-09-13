@@ -10,12 +10,32 @@ h6 {
 }
 h2 {
   @apply text-japonica-500 font-bold text-4xl;
+  @screen xl {
+    @apply text-5xl;
+  }
 }
 span,
 p {
   @apply font-serif;
+  @screen xl {
+    @apply text-lg;
+  }
 }
 
 @tailwind components;
 
 @tailwind utilities;
+
+.btn-elevation {
+  @apply elevation-2;
+  transition: box-shadow 0.3 ease-in-out;
+  &:active {
+    @apply elevation-8;
+  }
+}
+.btn-hover {
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: color-mod(theme('colors.mojo.500') lightness(+5%));
+  }
+}

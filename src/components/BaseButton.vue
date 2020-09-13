@@ -49,7 +49,7 @@ export default defineComponent({
 .btn {
   @apply relative overflow-hidden;
   .ripple {
-    @apply bg-white opacity-50 absolute rounded-full h-24 w-24 -mt-12 -ml-12;
+    @apply bg-white opacity-25 absolute rounded-full h-24 w-24 -mt-12 -ml-12;
     animation: ripple 1.5s;
     animation-fill-mode: forwards;
     transition: opacity 1s;
@@ -62,7 +62,6 @@ export default defineComponent({
   0% {
     transform: scale(0);
   }
-
   100% {
     transform: scale(10);
   }

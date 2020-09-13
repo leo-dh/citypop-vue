@@ -8,7 +8,7 @@
         Citypop
       </h1>
       <btn
-        class="px-4 py-2 bg-mojo-500 text-center rounded-full mt-8 font-cursive elevation-2 z-10 sm:text-xl sm:px-6 lg:text-xl lg:mt-10 xl:text-2xl xl:mt-12"
+        class="px-4 py-2 bg-mojo-500 text-center rounded-full mt-8 font-cursive z-10 sm:text-xl sm:px-6 lg:text-xl lg:mt-10 xl:text-2xl xl:mt-12 btn-elevation btn-hover"
         @click="scrollIntoView"
       >
         Let's go!

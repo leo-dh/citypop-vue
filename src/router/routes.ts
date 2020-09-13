@@ -11,11 +11,11 @@ export const routes: Array<RouteRecordRaw> = [
     }
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/resources',
+    name: 'Resources',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Resources.vue'),
     meta: {
-      icon: 'about'
+      icon: 'resources'
     }
   }
 ];
