@@ -46,7 +46,7 @@
         <router-link :to="route.path" exact-active-class="text-japonica-500">
           <btn class="rounded w-full" @click="toggleSideBar(false)">
             <div class="flex w-full px-1 py-5 items-center">
-              <route-icon :icon="route.meta.icon" class="w-6 h-6  fill-current mx-2" />
+              <route-icon :icon="route.meta.icon" class="w-6 h-6 fill-current mx-2" />
               <span class="font-serif font-bold ml-4">{{ route.name }}</span>
             </div>
           </btn>

@@ -1,5 +1,5 @@
 <template>
-  <img :src="imgSrc" alt="" />
+  <img :src="imgSrc" alt="" @click="showAlbumModal" />
 </template>
 
 <script lang="ts">
@@ -12,10 +12,23 @@ export default defineComponent({
       default: ''
     }
   },
-  setup() {
-    return {};
+  emits: ['show-album-modal'],
+  setup(props, context) {
+    const showAlbumModal = () => {
+      context.emit('show-album-modal');
+    };
+    return { showAlbumModal };
   }
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+img {
+  filter: brightness(70%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+img:hover {
+  filter: brightness(100%);
+}
+</style>

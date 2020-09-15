@@ -1,25 +1,34 @@
 <template>
-  <div class="albumGrid ">
-    <template v-for="(album, i) in albums" :key="i">
-      <album-card :img-src="album.cover" />
-    </template>
+  <div>
+    <div class="albumGrid ">
+      <template v-for="(album, i) in albums" :key="i">
+        <album-card :img-src="album.cover" @show-album-modal="toggleAlbumModal(true)" />
+      </template>
+    </div>
+    <album-modal :show-album-modal="showAlbumModal" @close-album-modal="toggleAlbumModal(false)" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import AlbumCard from '@/components/AlbumCard.vue';
+import AlbumModal from '@/components/AlbumModal.vue';
 import useFetch from '@/composite/useFetch';
 
 export default defineComponent({
   components: {
-    AlbumCard
+    AlbumCard,
+    AlbumModal
   },
   setup() {
     const { response: albums, error, fetching } = useFetch(
       'https://leodh.dev/citypop/api/albums?limit=18'
     );
-    return { albums, error, fetching };
+    const showAlbumModal = ref(false);
+    const toggleAlbumModal = (show: boolean) => {
+      showAlbumModal.value = show;
+    };
+    return { albums, error, fetching, showAlbumModal, toggleAlbumModal };
   }
 });
 </script>

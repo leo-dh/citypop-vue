@@ -24,6 +24,11 @@ module.exports = {
         '84': '21rem',
         '96': '24rem'
       },
+      backgroundOpacity: {
+        '10': '0.1',
+        '20': '0.2',
+        '40': '0.4'
+      },
       colors: {
         deluge: {
           100: '#F3EFF6',
@@ -36,7 +41,6 @@ module.exports = {
           800: '#3B2B49',
           900: '#271D31'
         },
-
         japonica: {
           100: '#FBF2F1',
           200: '#F6DEDC',
@@ -48,7 +52,6 @@ module.exports = {
           800: '#623833',
           900: '#412522'
         },
-
         mojo: {
           100: '#F9ECEC',
           200: '#F0CFCF',
