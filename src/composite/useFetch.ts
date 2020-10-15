@@ -1,7 +1,7 @@
-import { reactive, toRefs } from 'vue';
+import { reactive, Ref, toRefs } from 'vue';
 export default function(url: string, options?: object) {
   const state = reactive({
-    response: [],
+    response: null,
     error: false,
     fetching: true
   });
@@ -15,4 +15,9 @@ export default function(url: string, options?: object) {
       state.error = true;
     });
   return toRefs(state);
+}
+export interface FetchResult<T> {
+  response: Ref<null | T>;
+  error: Ref<boolean>;
+  fetching: Ref<boolean>;
 }

@@ -2,7 +2,7 @@
   <div class="flex items-center justify-center w-full h-screen relative overflow-hidden">
     <div class="flex flex-col items-center">
       <h1
-        class="uppercase text-5xl leading-tight font-bold text-center title-color sm:text-6xl lg:text-7xl xl:text-8xl"
+        class="uppercase text-5xl leading-tight font-bold text-center sm:text-6xl lg:text-7xl xl:text-8xl bg-clip-text text-transparent bg-gradient-to-tl from-japonica-500 to-deluge-500"
       >
         Discover<br />
         Citypop
@@ -32,15 +32,6 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.title-color {
-  background: -webkit-linear-gradient(
-    315deg,
-    theme('colors.japonica.500'),
-    theme('colors.deluge.500')
-  );
-  background-clip: text;
-  color: transparent;
-}
 .watermark {
   @apply absolute bottom-0;
   opacity: 0.1;

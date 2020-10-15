@@ -2,10 +2,14 @@
   <div>
     <div class="albumGrid ">
       <template v-for="(album, i) in albums" :key="i">
-        <album-card :img-src="album.cover" @show-album-modal="toggleAlbumModal(true)" />
+        <album-card :img-src="album.cover" @show-album-modal="toggleAlbumModal(true, i)" />
       </template>
     </div>
-    <album-modal :show-album-modal="showAlbumModal" @close-album-modal="toggleAlbumModal(false)" />
+    <album-modal
+      :show-album-modal="showAlbumModal"
+      :selected-album="selectedAlbum"
+      @close-album-modal="toggleAlbumModal(false)"
+    />
   </div>
 </template>
 
@@ -13,7 +17,7 @@
 import { defineComponent, ref } from 'vue';
 import AlbumCard from '@/components/AlbumCard.vue';
 import AlbumModal from '@/components/AlbumModal.vue';
-import useFetch from '@/composite/useFetch';
+import useFetch, { FetchResult } from '@/composite/useFetch';
 
 export default defineComponent({
   components: {
@@ -21,14 +25,16 @@ export default defineComponent({
     AlbumModal
   },
   setup() {
-    const { response: albums, error, fetching } = useFetch(
+    const { response: albums, error, fetching }: FetchResult<Record<string, any>[]> = useFetch(
       'https://leodh.dev/citypop/api/albums?limit=18'
     );
     const showAlbumModal = ref(false);
-    const toggleAlbumModal = (show: boolean) => {
+    const selectedAlbum = ref({});
+    const toggleAlbumModal = (show: boolean, i?: number) => {
       showAlbumModal.value = show;
+      if (show) selectedAlbum.value = (albums.value as Record<string, any>[])[i as number];
     };
-    return { albums, error, fetching, showAlbumModal, toggleAlbumModal };
+    return { albums, error, fetching, showAlbumModal, toggleAlbumModal, selectedAlbum };
   }
 });
 </script>

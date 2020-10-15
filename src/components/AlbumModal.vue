@@ -10,8 +10,37 @@
     v-if="showAlbumModal"
     class="fixed w-screen h-screen bg-blackcurrant z-30 top-0 left-0 flex flex-col p-2"
   >
-    <div class="flex-1">
-      Hello World
+    <div class="flex-1 flex flex-col items-center">
+      <img :src="selectedAlbum.cover" alt="" class="w-56 h-56 rounded-2xl" />
+      <div>
+        <h6>{{ selectedAlbum.title }}</h6>
+        <h6>{{ selectedAlbum.artist }}</h6>
+      </div>
+      <div class="relative h-full w-full mt-4">
+        <ul class="overflow-y-scroll h-full w-full absolute space-y-2">
+          <template v-for="(track, i) in selectedAlbum.tracks" :key="i">
+            <li class="flex justify-between pr-5 items-center">
+              <div class="flex items-center">
+                <svg
+                  v-if="track.titleTrack"
+                  class="fill-current w-4 h-4 text-japonica-500 flex-shrink-0"
+                  viewBox="0 0 24 24"
+                  title="Title Track"
+                >
+                  <title>Title Track</title>
+                  <path d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"
+                  />
+                </svg>
+                <svg v-else class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"></svg>
+                <span class="font-bold ml-1">{{ track.title }}</span>
+              </div>
+              <span class="font-bold ml-4">{{ track.duration }}</span>
+            </li>
+          </template>
+        </ul>
+      </div>
     </div>
     <div class="flex-grow-0 justify-end flex">
       <btn
@@ -31,6 +60,10 @@ export default defineComponent({
   props: {
     showAlbumModal: {
       type: Boolean,
+      required: true
+    },
+    selectedAlbum: {
+      type: Object,
       required: true
     }
   },
